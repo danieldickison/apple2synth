@@ -10,7 +10,8 @@ Main	lda $c010	; clear key
 	jsr $fd0c 	; wait for keypress
 	lda $c000 	; load key
 	sta $400	; print char
-	sbc #$31	; map ascii "1" to 0
+        clc
+	sbc #$30	; map ascii "1" to 0
         tax
         lda Table,x
         sta $1000
@@ -34,6 +35,6 @@ BuzzLoop
 	rts
         
 Table:	hex 88 ;c
-	hex 7a 6c 67 58 4f 46
+	hex 7a 6c 67 5a 4f 46
 	hex 42 ;c'
         
